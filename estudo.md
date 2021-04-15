@@ -99,6 +99,18 @@ NodeJS:
     - plugins;
     - fontes.
 
+## 🚀 Tecnologias
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- HTML
+- CSS
+- JavaScript
+- NodeJS
+- EJS
+- Express
+- SQLite
+
 # npm == node packeges manager - gerenciador de pacotes de nó
 - É um jeito de gerenciar biblioteca, pacotes(packages);
 - npm init -y - não faz nenhum pergunta, dá o padrão das configurações.
@@ -454,3 +466,107 @@ module.exports = routes;
 
 ## Tipo de rota
  - rota job/:id GET
+
+## Responsabilidade de arquivo:
+**Colocar no arquivo o que tem que ficar no arquivo.**
+Organizar o código, para encontramos ele mais fácil e deixar os arquivos menores;
+
+- Model == fornecer dados, tudo que acontece dentro do models e o retorno dos dados
+
+- Views == é o que mostra para o front-end
+
+- Controllers == são coisas que controlam, tudo que controla vai ficar dentro de controllers
+
+Padrão MVC - model, views, controllers == Trabalhar com model, viwes e controllers (organizar os códigos entre essas pastas)
+
+- Routes == rotas
+
+- Ideia da refatoração:
+  - Deixar tudo intuitivo == A ideia é, que um programador(a) pegue o nosso código e entenda o que está acontecendo
+
+- Utils == utilitario
+
+# Banco de Dados
+- Banco de dados é um lugar onde vamos pegar as informações e colocar dentro de uma caixa(exemplo) e guardar fechar a caixa.
+
+sql == são comando de banco de dados
+só funciona dentro de banco de dados
+os comandos do banco de dados são em maiúsculo, tudo que estiver em maiúsculo é comando sql
+criar uma tabela com o nome profile e nesse profile vai ter alguns identificadores(campos para guardar informações)
+campo é o identificado do valor (Objeto == {propriedade: valor})
+tipo de dado
+int, integer == números inteiros
+todas as tabelas precisam ter um identificador "id"
+autoincrement é auto incrementar(incremento automático), adicionar automaticamente id++
+o banco de dados automaticamente vai incrementar o id
+
+primary key == número identificador da informação
+primary key são valores que são únicos, nunca se repete
+
+// código sql
+
+**CRIAR A TABELA NO BANCO DE DADOS PARA PODER RECEBER VALORES**
+>Esse comando CREATE é executado uma única vez, porque ele que cria as tabelas do banco de dados, e essas tabelas poderam receber, alterar, deletar
+````sql
+CREATE TABLE profile (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT,
+  avatar TEXT,
+  "monthly-budget" INT,
+  "hours-per-day" INT,
+  "days-per-week" INT,
+  "vacation-per-year" INT,
+  "value-hour" INT
+)
+````
+
+## SELECT
+````js
+1 - const db = Database();
+2 - db.get();
+3 - db.all();
+4 - db.close();
+````
+
+- linha 1 - inicia o banco de dados;
+- linha 2 - recupera uma única tabela;
+- linha 3 - recupera todas as tabelas;
+- linha 4 - fecha o banco de dados(conexão).
+
+rodar
+pega o comando sql aqui e roda ele no banco de dados
+inserir na tabela profile nesses campos esses valores
+pode escolher os campos que vão ser inseridos
+
+**INSERT - é colocar valores no banco de dados**
+````js
+Database.run(`
+  INSERT INTO profile (
+    name,
+    avatar,
+    monthly_budget,
+    days_per_week,
+    hours_per_day,
+    vacation_per_year,
+    value_hour
+  ) VALUES (
+    "Jonhison",
+    "https://github.com/jonhisonF.png",
+    3000,
+    5,
+    5,
+    4,
+    75
+  );
+`);
+````
+
+# DICA:
+- O WHERE é muito importante, não pode dá um delete sem o WHERE nem update sem o WHERE, porque ele faz delete e update de tudo que tem na base de dados
+
+# Ferramenta para ler os dados do banco de Dados
+
+- beekeeper
+
+## Normalização dos dados
+- { value_hour => value-hour }

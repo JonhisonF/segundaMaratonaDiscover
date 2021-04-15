@@ -13,7 +13,7 @@
   --color-primary: #41414C;
   --color-secondary: #F1972C;
   --color-secondary-hover: #FA9C2D;
-  
+
   --color-input-background: #F8F8FC;
   --color-button-text: #FFFFFF;
   --color-hairline-in-dark: #4F4F5B;
@@ -25,9 +25,9 @@
   --color-card-content: #787880;
 
   --color-cancel: #E1E3E5;
-  --color-delete: #EB3B35; 
+  --color-delete: #EB3B35;
   --color-save: #36B336;
-  
+
   --color-badge-progress-text: var(--color-save);
   --color-badge-progress-background: #E8F8E8;
   --color-badge-done-text: var(--color-delete);
@@ -35,6 +35,10 @@
 
   --color-header-inner-title: var(--color-card-label)
 
+}
+
+.done {
+  background: red;
 }
 
 /* user-agent font-size is 16px, let's make it responsive */

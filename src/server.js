@@ -6,6 +6,8 @@ const express = require("express");
 const server = express();
 const routes = require("./routes");
 
+const path = require("path");
+
 // setando uma configuração, muito semelhante ao use(configuração)
 /*
   Significa que o express já espera que você use uma ideia de template engine(ejs - colocar javascript no html)
@@ -20,8 +22,18 @@ const routes = require("./routes");
   Usando o template engine
   Um template é um modelo a ser seguido, com uma estrutura predefinida que facilita o desenvolvimento e criação do conteúdo a partir de algo construído a priori.
   engine - motor
+
+  // O nosso front vai ser feito em ejs, ele entende que todos os arquivos vão está em um past views
 */
-server.set('view engine', 'ejs')
+server.set('view engine', 'ejs');
+
+// mudar a localização da pasta views
+// server é o que faz tudo funcionar
+// set = que ela vai configurar, falar alguma coisa
+// a nossa pasta padrão é a 'views' só que eu quero mudar,
+// o path.join() é um método(module) path == pasta/caminho de arquivo,
+// ele junta o __dirname com o 'views'
+server.set('views', path.join(__dirname, 'views'));
 
 /*
   - middlewares - mercadorias do meio
